@@ -3,24 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF336A2A26764F69004D188A /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = FF336A2926764F69004D188A /* screenshot.png */; };
 		FFB1D7F82675DEAF002148FD /* MiniSQL_ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */; };
 		FFB1D7FA2675DEAF002148FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D7F92675DEAF002148FD /* ContentView.swift */; };
 		FFB1D7FC2675DEAF002148FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1D7FB2675DEAF002148FD /* Assets.xcassets */; };
 		FFB1D7FF2675DEAF002148FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1D7FE2675DEAF002148FD /* Preview Assets.xcassets */; };
+		FFB1D8092675E789002148FD /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = FFB1D8082675E789002148FD /* HighlightedTextEditor */; };
+		FFB1D81126762EFE002148FD /* SQLEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D81026762EFE002148FD /* SQLEditor.swift */; };
+		FFB1D813267642F7002148FD /* DataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D812267642F7002148FD /* DataTable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FFB1D7F42675DEAF002148FD /* MiniSQL Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MiniSQL Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF336A2826764EF2004D188A /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		FF336A2926764F69004D188A /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = ../../Desktop/screenshot.png; sourceTree = "<group>"; };
+		FFB1D7F42675DEAF002148FD /* MiniSQL Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "MiniSQL Client.app"; path = "/Users/yuanlin/Developer/MiniSQL-Client/build/Debug/MiniSQL Client.app"; sourceTree = "<absolute>"; };
 		FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSQL_ClientApp.swift; sourceTree = "<group>"; };
 		FFB1D7F92675DEAF002148FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFB1D7FB2675DEAF002148FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFB1D7FE2675DEAF002148FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FFB1D8002675DEAF002148FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFB1D8012675DEAF002148FD /* MiniSQL_Client.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MiniSQL_Client.entitlements; sourceTree = "<group>"; };
+		FFB1D81026762EFE002148FD /* SQLEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLEditor.swift; sourceTree = "<group>"; };
+		FFB1D812267642F7002148FD /* DataTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB1D8092675E789002148FD /* HighlightedTextEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,30 +46,17 @@
 		FFB1D7EB2675DEAF002148FD = {
 			isa = PBXGroup;
 			children = (
-				FFB1D7F62675DEAF002148FD /* MiniSQL Client */,
-				FFB1D7F52675DEAF002148FD /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		FFB1D7F52675DEAF002148FD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FFB1D7F42675DEAF002148FD /* MiniSQL Client.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FFB1D7F62675DEAF002148FD /* MiniSQL Client */ = {
-			isa = PBXGroup;
-			children = (
+				FF336A2926764F69004D188A /* screenshot.png */,
+				FF336A2826764EF2004D188A /* readme.md */,
 				FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */,
 				FFB1D7F92675DEAF002148FD /* ContentView.swift */,
+				FFB1D812267642F7002148FD /* DataTable.swift */,
 				FFB1D7FB2675DEAF002148FD /* Assets.xcassets */,
 				FFB1D8002675DEAF002148FD /* Info.plist */,
 				FFB1D8012675DEAF002148FD /* MiniSQL_Client.entitlements */,
 				FFB1D7FD2675DEAF002148FD /* Preview Content */,
+				FFB1D81026762EFE002148FD /* SQLEditor.swift */,
 			);
-			path = "MiniSQL Client";
 			sourceTree = "<group>";
 		};
 		FFB1D7FD2675DEAF002148FD /* Preview Content */ = {
@@ -87,6 +83,9 @@
 			dependencies = (
 			);
 			name = "MiniSQL Client";
+			packageProductDependencies = (
+				FFB1D8082675E789002148FD /* HighlightedTextEditor */,
+			);
 			productName = "MiniSQL Client";
 			productReference = FFB1D7F42675DEAF002148FD /* MiniSQL Client.app */;
 			productType = "com.apple.product-type.application";
@@ -114,7 +113,10 @@
 				Base,
 			);
 			mainGroup = FFB1D7EB2675DEAF002148FD;
-			productRefGroup = FFB1D7F52675DEAF002148FD /* Products */;
+			packageReferences = (
+				FFB1D8072675E789002148FD /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
+			);
+			productRefGroup = FFB1D7EB2675DEAF002148FD;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -128,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF336A2A26764F69004D188A /* screenshot.png in Resources */,
 				FFB1D7FF2675DEAF002148FD /* Preview Assets.xcassets in Resources */,
 				FFB1D7FC2675DEAF002148FD /* Assets.xcassets in Resources */,
 			);
@@ -140,6 +143,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFB1D813267642F7002148FD /* DataTable.swift in Sources */,
+				FFB1D81126762EFE002148FD /* SQLEditor.swift in Sources */,
 				FFB1D7FA2675DEAF002148FD /* ContentView.swift in Sources */,
 				FFB1D7F82675DEAF002148FD /* MiniSQL_ClientApp.swift in Sources */,
 			);
@@ -268,14 +273,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "MiniSQL Client/MiniSQL_Client.entitlements";
+				CODE_SIGN_ENTITLEMENTS = MiniSQL_Client.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"MiniSQL Client/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 8D3HRMP3KM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "MiniSQL Client/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -292,14 +298,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "MiniSQL Client/MiniSQL_Client.entitlements";
+				CODE_SIGN_ENTITLEMENTS = MiniSQL_Client.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"MiniSQL Client/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = 8D3HRMP3KM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "MiniSQL Client/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -333,6 +340,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FFB1D8072675E789002148FD /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFB1D8082675E789002148FD /* HighlightedTextEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFB1D8072675E789002148FD /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
+			productName = HighlightedTextEditor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FFB1D7EC2675DEAF002148FD /* Project object */;
 }
