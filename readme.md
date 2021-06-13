@@ -4,4 +4,4 @@ A simple client for [MinSQL](https://github.com/ken20001207/minisql) , a SQL eng
 
 ## Screenshot
 
-[](screenshot.png)
+![](screenshot.png)
