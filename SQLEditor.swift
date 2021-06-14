@@ -13,7 +13,7 @@ struct SQLEditor: View {
     @Binding var command: String;
     
     private static let keywordRegex = try! NSRegularExpression(
-        pattern: "CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES",
+        pattern: "CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE",
         options: NSRegularExpression.Options.caseInsensitive
     )
 

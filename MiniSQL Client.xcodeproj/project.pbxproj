@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF336A2A26764F69004D188A /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = FF336A2926764F69004D188A /* screenshot.png */; };
 		FFB1D7F82675DEAF002148FD /* MiniSQL_ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */; };
 		FFB1D7FA2675DEAF002148FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D7F92675DEAF002148FD /* ContentView.swift */; };
 		FFB1D7FC2675DEAF002148FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1D7FB2675DEAF002148FD /* Assets.xcassets */; };
@@ -19,8 +18,7 @@
 
 /* Begin PBXFileReference section */
 		FF336A2826764EF2004D188A /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
-		FF336A2926764F69004D188A /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screenshot.png; path = ../../Desktop/screenshot.png; sourceTree = "<group>"; };
-		FFB1D7F42675DEAF002148FD /* MiniSQL Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "MiniSQL Client.app"; path = "/Users/yuanlin/Developer/MiniSQL-Client/build/Debug/MiniSQL Client.app"; sourceTree = "<absolute>"; };
+		FF957DAA26772A4C005CC91A /* MiniSQL Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MiniSQL Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSQL_ClientApp.swift; sourceTree = "<group>"; };
 		FFB1D7F92675DEAF002148FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFB1D7FB2675DEAF002148FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,7 +44,6 @@
 		FFB1D7EB2675DEAF002148FD = {
 			isa = PBXGroup;
 			children = (
-				FF336A2926764F69004D188A /* screenshot.png */,
 				FF336A2826764EF2004D188A /* readme.md */,
 				FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */,
 				FFB1D7F92675DEAF002148FD /* ContentView.swift */,
@@ -56,6 +53,7 @@
 				FFB1D8012675DEAF002148FD /* MiniSQL_Client.entitlements */,
 				FFB1D7FD2675DEAF002148FD /* Preview Content */,
 				FFB1D81026762EFE002148FD /* SQLEditor.swift */,
+				FF957DAA26772A4C005CC91A /* MiniSQL Client.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,7 +85,7 @@
 				FFB1D8082675E789002148FD /* HighlightedTextEditor */,
 			);
 			productName = "MiniSQL Client";
-			productReference = FFB1D7F42675DEAF002148FD /* MiniSQL Client.app */;
+			productReference = FF957DAA26772A4C005CC91A /* MiniSQL Client.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +128,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF336A2A26764F69004D188A /* screenshot.png in Resources */,
 				FFB1D7FF2675DEAF002148FD /* Preview Assets.xcassets in Resources */,
 				FFB1D7FC2675DEAF002148FD /* Assets.xcassets in Resources */,
 			);
