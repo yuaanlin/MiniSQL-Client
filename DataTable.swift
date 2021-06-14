@@ -19,21 +19,27 @@ struct DataTable:View {
             
             HStack(spacing: 0) {
                 ForEach(fields, id: \.name) { i in
-                    Text(i.name).padding().frame(width: 120,height: 18).border(Color.black, width: 1)
+                    Text(i.name).padding().frame(width: 120,height: 18)
+                    Divider()
                 }
                 Spacer()
             }
+            
+            Divider()
             
             ForEach(data, id: \.self) { i in
                 
                 HStack(spacing: 0) {
                     
                     ForEach(i, id: \.self) { j in
-                        Text(j).padding().frame(width: 120,height: 18).border(Color.black, width: 1)
+                        Text(j).padding().frame(width: 120,height: 18)
+                        Divider()
                     }
                     
                     Spacer()
                 }
+                
+                Divider()
                 
             }
             
