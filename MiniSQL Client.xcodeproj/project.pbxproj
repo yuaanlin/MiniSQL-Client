@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF397EE92677559A0058F7DD /* MessageTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAC4110267754D60007CA7E /* MessageTable.swift */; };
+		FF397EEB267756D40058F7DD /* ExecuteSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF397EEA267756C70058F7DD /* ExecuteSQL.swift */; };
+		FF397EED2677574B0058F7DD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF397EEC267757030058F7DD /* Models.swift */; };
+		FF397EEF2677576C0058F7DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF397EEE267757610058F7DD /* Constants.swift */; };
 		FFB1D7F82675DEAF002148FD /* MiniSQL_ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */; };
 		FFB1D7FA2675DEAF002148FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB1D7F92675DEAF002148FD /* ContentView.swift */; };
 		FFB1D7FC2675DEAF002148FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFB1D7FB2675DEAF002148FD /* Assets.xcassets */; };
@@ -18,7 +22,11 @@
 
 /* Begin PBXFileReference section */
 		FF336A2826764EF2004D188A /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		FF397EEA267756C70058F7DD /* ExecuteSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecuteSQL.swift; sourceTree = "<group>"; };
+		FF397EEC267757030058F7DD /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		FF397EEE267757610058F7DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FF957DAA26772A4C005CC91A /* MiniSQL Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MiniSQL Client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFAC4110267754D60007CA7E /* MessageTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTable.swift; sourceTree = "<group>"; };
 		FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniSQL_ClientApp.swift; sourceTree = "<group>"; };
 		FFB1D7F92675DEAF002148FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFB1D7FB2675DEAF002148FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +52,10 @@
 		FFB1D7EB2675DEAF002148FD = {
 			isa = PBXGroup;
 			children = (
+				FF397EEE267757610058F7DD /* Constants.swift */,
+				FF397EEC267757030058F7DD /* Models.swift */,
+				FF397EEA267756C70058F7DD /* ExecuteSQL.swift */,
+				FFAC4110267754D60007CA7E /* MessageTable.swift */,
 				FF336A2826764EF2004D188A /* readme.md */,
 				FFB1D7F72675DEAF002148FD /* MiniSQL_ClientApp.swift */,
 				FFB1D7F92675DEAF002148FD /* ContentView.swift */,
@@ -140,10 +152,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF397EEB267756D40058F7DD /* ExecuteSQL.swift in Sources */,
 				FFB1D813267642F7002148FD /* DataTable.swift in Sources */,
+				FF397EE92677559A0058F7DD /* MessageTable.swift in Sources */,
 				FFB1D81126762EFE002148FD /* SQLEditor.swift in Sources */,
 				FFB1D7FA2675DEAF002148FD /* ContentView.swift in Sources */,
 				FFB1D7F82675DEAF002148FD /* MiniSQL_ClientApp.swift in Sources */,
+				FF397EED2677574B0058F7DD /* Models.swift in Sources */,
+				FF397EEF2677576C0058F7DD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
