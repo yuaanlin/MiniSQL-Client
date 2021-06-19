@@ -20,20 +20,32 @@ struct MessageTable: View {
     var body: some View {
         
         VStack {
-            
-            ScrollView {
                 
-                ForEach(messages, id: \.id) { i in
-                    
-                    HStack {
-                        Text("\(i.time, formatter: taskDateFormat)").foregroundColor(Color.gray)
-                        Divider()
-                        Text(i.query).lineLimit(1).frame(width: 180, alignment: .leading)
-                        Divider()
-                        Text(i.content)
-                        Spacer()
+            ScrollViewReader { scrollProxy in
+                
+                ScrollView {
+        
+                    ForEach(messages, id: \.id) { i in
+                        
+                        HStack {
+                            
+                            Text("\(i.time, formatter: taskDateFormat)").foregroundColor(Color.gray)
+                            Divider()
+                            Text(i.query).lineLimit(1).frame(width: 180, alignment: .leading)
+                            Divider()
+                            Text(i.content)
+                            Spacer()
+                            
+                        }
+                        .id(i.id)
+                        
                     }
                     
+                }
+                .onChange(of: messages.count) { id in
+                    withAnimation {
+                        scrollProxy.scrollTo(messages.last?.id)
+                    }
                 }
                 
             }
