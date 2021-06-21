@@ -16,9 +16,14 @@ struct SQLEditor: View {
         pattern: "CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE",
         options: NSRegularExpression.Options.caseInsensitive
     )
+    
+    private static let logicRegex = try! NSRegularExpression(
+        pattern: "AND|OR",
+        options: NSRegularExpression.Options.caseInsensitive
+    )
 
     private static let dataTypeRegex = try! NSRegularExpression(
-        pattern: "INT|VARCHAR(.*)|FLOAT",
+        pattern: "INT|VARCHAR(.*)|FLOAT|=|<|>|!",
         options: NSRegularExpression.Options.caseInsensitive
     )
 
@@ -30,9 +35,14 @@ struct SQLEditor: View {
         TextFormattingRule(key: .foregroundColor, value: NSColor(Color.gray))
     ]
     
+    private static let logicFormat: [TextFormattingRule] = [
+        TextFormattingRule(key: .foregroundColor, value: NSColor(Color.green))
+    ]
+    
     private let rules: [HighlightRule] = [
         HighlightRule(pattern: keywordRegex, formattingRules: keywordFormat),
-        HighlightRule(pattern: dataTypeRegex, formattingRules: dataTypeFormat)
+        HighlightRule(pattern: dataTypeRegex, formattingRules: dataTypeFormat),
+        HighlightRule(pattern: logicRegex, formattingRules: logicFormat)
     ]
     
     var body: some View {
