@@ -8,10 +8,13 @@
 import Foundation
 
 let mockQuery = """
-    CREATE TABLE todo (
-        id int PRIMARY KEY,
-        title varchar(255)
-    )
+    CREATE TABLE Persons (
+        PersonID int,
+        LastName varchar,
+        FirstName varchar,
+        Address varchar,
+        City varchar
+    );
     """
 
 let mockMsgs = [

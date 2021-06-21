@@ -13,17 +13,17 @@ struct SQLEditor: View {
     @Binding var command: String;
     
     private static let keywordRegex = try! NSRegularExpression(
-        pattern: "CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE",
+        pattern: "(?<![a-zA-Z0-9])(CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE)(?![a-zA-Z0-9])",
         options: NSRegularExpression.Options.caseInsensitive
     )
     
     private static let logicRegex = try! NSRegularExpression(
-        pattern: "AND|OR",
+        pattern: "(?<![a-zA-Z0-9])(AND|OR)(?![a-zA-Z0-9])",
         options: NSRegularExpression.Options.caseInsensitive
     )
 
     private static let dataTypeRegex = try! NSRegularExpression(
-        pattern: "INT|VARCHAR(.*)|FLOAT|=|<|>|!",
+        pattern: "(?<![a-zA-Z0-9])(INT|VARCHAR|FLOAT|=|<|>|!)(?![a-zA-Z0-9])",
         options: NSRegularExpression.Options.caseInsensitive
     )
 
