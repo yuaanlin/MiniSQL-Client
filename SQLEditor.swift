@@ -13,7 +13,7 @@ struct SQLEditor: View {
     @Binding var command: String;
     
     private static let keywordRegex = try! NSRegularExpression(
-        pattern: "(?<![a-zA-Z0-9])(CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE)(?![a-zA-Z0-9])",
+        pattern: "(?<![a-zA-Z0-9])(CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE|ON)(?![a-zA-Z0-9])",
         options: NSRegularExpression.Options.caseInsensitive
     )
     
@@ -47,9 +47,6 @@ struct SQLEditor: View {
     
     var body: some View {
         HighlightedTextEditor(text: $command, highlightRules: self.rules).frame(
-            minWidth: 360,
-            idealWidth: 720,
-            maxWidth: 1280,
             minHeight: 240,
             idealHeight: 240,
             maxHeight: 240,
