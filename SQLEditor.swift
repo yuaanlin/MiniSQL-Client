@@ -13,7 +13,7 @@ struct SQLEditor: View {
     @Binding var command: String;
     
     private static let keywordRegex = try! NSRegularExpression(
-        pattern: "(?<![a-zA-Z0-9])(CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE)(?![a-zA-Z0-9])",
+        pattern: "(?<![a-zA-Z0-9])(CREATE|DROP|TABLE|INSERT|INTO|UPDATE|INDEX|DELETE|PRIMARY|KEY|VALUES|SELECT|FROM|WHERE|SET)(?![a-zA-Z0-9])",
         options: NSRegularExpression.Options.caseInsensitive
     )
     
@@ -24,6 +24,11 @@ struct SQLEditor: View {
 
     private static let dataTypeRegex = try! NSRegularExpression(
         pattern: "(?<![a-zA-Z0-9])(INT|VARCHAR|FLOAT|=|<|>|!)(?![a-zA-Z0-9])",
+        options: NSRegularExpression.Options.caseInsensitive
+    )
+    
+    private static let symbolRegex = try! NSRegularExpression(
+        pattern: "=|<|>|!|,",
         options: NSRegularExpression.Options.caseInsensitive
     )
 
@@ -42,6 +47,7 @@ struct SQLEditor: View {
     private let rules: [HighlightRule] = [
         HighlightRule(pattern: keywordRegex, formattingRules: keywordFormat),
         HighlightRule(pattern: dataTypeRegex, formattingRules: dataTypeFormat),
+        HighlightRule(pattern: symbolRegex, formattingRules: dataTypeFormat),
         HighlightRule(pattern: logicRegex, formattingRules: logicFormat)
     ]
     
