@@ -27,6 +27,14 @@ struct ContentView: View {
     
     @State private var alertMsg = ""
     
+    @State private var currExeLine = 0
+    
+    @State private var executing = false
+    
+    @State private var totalLine = 0
+    
+    @State private var cmds: [String] = [];
+    
     func handleExecuted(err: String?, res: SQLServerResponse?) {
         if(res != nil) {
             messages.append(
@@ -37,6 +45,16 @@ struct ContentView: View {
             )
             data = res?.results ?? []
             fields = res?.fields ?? []
+            
+            if(executing && totalLine > currExeLine + 1 && cmds[currExeLine + 1] != "") {
+                currExeLine += 1
+                executeSQL(url: host, query: cmds[currExeLine], callback: handleExecuted)
+                
+            } else {
+                currExeLine = 0
+                executing = false
+            }
+            
         } else {
             messages.append(
                 Message(query: command.replacingOccurrences(of: "\n", with: ""),
@@ -47,6 +65,8 @@ struct ContentView: View {
             alertTitle = "Error Occured"
             alertMsg = err ?? "Encountered unexpected error Q_Q"
             showingAlert = true
+            currExeLine = 0
+            executing = false
         }
     }
     
@@ -54,18 +74,52 @@ struct ContentView: View {
         
         VStack(alignment: .leading) {
             
-            
             Text("Host")
             TextField("localhost:3306", text: $host).padding(.bottom)
             
-            
-            Text("Query")
+            HStack {
+                Text("Query")
+                Button("select File") {
+                  let panel = NSOpenPanel()
+                  panel.allowsMultipleSelection = false
+                  panel.canChooseDirectories = false
+                  if panel.runModal() == .OK {
+                      
+                      guard let url = panel.url else {
+                          return
+                      }
+                      
+                      do {
+                          command = try String(contentsOf: url, encoding: .utf8)
+                      } catch {
+                          alertTitle = "Error"
+                          alertMsg = "Cannot open this file"
+                          showingAlert = true
+                      }
+                  }
+                }
+                
+            }
             SQLEditor(command: $command)
             
             HStack{
                 Spacer()
                 Button("Execute") {
-                    executeSQL(url: host, query: command, callback: handleExecuted)
+                
+                        cmds = command.components(separatedBy: ";")
+                        currExeLine = 0
+                        executing = true
+                        totalLine = cmds.count
+                        executeSQL(url: host, query: cmds[0], callback: handleExecuted)
+                    
+                }
+                if(executing) {
+                  
+                    Text("Executing line " + String(currExeLine) + "/" + String(totalLine))
+                    Button("Cancel") {
+                        executing = false
+                    }
+                    
                 }
             }
             
@@ -87,6 +141,7 @@ struct ContentView: View {
             Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("Close")))
             
         }
+        
 
     }
 }

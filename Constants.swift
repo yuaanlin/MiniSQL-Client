@@ -18,7 +18,7 @@ let mockQuery = """
     """
 
 let mockMsgs = [
-    Message(query: mockQuery.replacingOccurrences(of: "\n", with: ""), content:"Created table \"todo\" successfully.", time: Date())
+    Message(query: "Let's getting start", content:"Enter the SQL query on the editor and click \"excute\" button", time: Date())
 ]
 
 let mockData : [[String]] = [
@@ -28,6 +28,6 @@ let mockData : [[String]] = [
 ]
 
 let mockFields : [Attribute] = [
-    Attribute(name: "id", dataType: "int"),
-    Attribute(name: "title", dataType: "string")
+    Attribute(name: "id", type: "int"),
+    Attribute(name: "title", type: "string")
 ];

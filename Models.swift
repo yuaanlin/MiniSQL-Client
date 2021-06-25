@@ -9,7 +9,7 @@ import Foundation
 
 struct Attribute: Codable {
     var name: String
-    var dataType: String
+    var type: String
 }
 
 struct Message {
