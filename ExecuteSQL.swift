@@ -7,10 +7,8 @@
 
 import Foundation
 
-let serial = DispatchQueue(label: "serial",attributes: .init(rawValue:0))
-
 func executeSQL(url: String, query: String, callback: @escaping (String?, SQLServerResponse?) -> Void) {
-    serial.async{
+    DispatchQueue.main.async{
         let url = URL(string: "http://" + url + "/minisql")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

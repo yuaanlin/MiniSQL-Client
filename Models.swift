@@ -12,6 +12,11 @@ struct Attribute: Codable {
     var type: String
 }
 
+struct ExecutionMessage: Codable {
+    var command: String
+    var message: String
+}
+
 struct Message {
     let id = UUID()
     var query: String
@@ -22,5 +27,5 @@ struct Message {
 struct SQLServerResponse: Codable {
     var results: [[String]]
     var fields: [Attribute]
-    var error: String
+    var messages: [ExecutionMessage]
 }

@@ -12,16 +12,24 @@ struct DataTable:View {
     
     @Binding var fields: [Attribute];
     @Binding var data: [[String]];
+    @Binding var page: Int;
+    
+    func dataFromIndex() -> Int {
+        return 200 * (page-1) > data.count ? data.count - 1 : 200 * (page-1)
+    }
+    
+    func dataToIndex() -> Int {
+        return 200 * (page) > data.count ? data.count : 200 * page
+    }
     
     var body: some View {
         
-        Text("Total " + String(data.count) + " records")
-        LazyVStack(spacing: 0) {
+        VStack(spacing: 0) {
             
             HStack(spacing: 0) {
                 
                 ForEach(fields, id: \.name) { i in
-                    Text(i.name).foregroundColor(Color.white).padding().frame(width: 120,height: 36)
+                    Text(i.name).foregroundColor(Color.white).padding().frame(width: 120,height: 24)
                     Divider()
                 }
                 Spacer()
@@ -31,24 +39,38 @@ struct DataTable:View {
             Divider()
             
             ScrollView {
-            
-                ForEach(data.prefix(200), id: \.self) { i in
                 
-                HStack(spacing: 0) {
+                ForEach( data.count == 0 ? [] : data[dataFromIndex()..<dataToIndex()], id: \.self) { i in
                     
-                    ForEach(i, id: \.self) { j in
-                        Text(j).padding().frame(width: 120,height: 18)
+                        HStack(spacing: 0) {
+                            
+                            ForEach(i, id: \.self) { j in
+                                Text(j).padding().frame(width: 120,height: 18)
+                                Divider()
+                            }
+                            
+                            Spacer()
+                        }
+                        
                         Divider()
-                    }
                     
-                    Spacer()
+                    }
+                
+            }.frame(height: 320)
+            
+            HStack {
+                
+                Spacer()
+                if(page > 1) {
+                    Button("Next Page") {
+                        page-=1
+                    }
                 }
-                
-                Divider()
-                
+                Text("Page " + String(page))
+                Button("Next Page") {
+                    page+=1
+                }
             }
-                
-            }.frame(height: 240)
             
         }.background(Color.white)
             

@@ -8,14 +8,12 @@
 import Foundation
 
 let mockQuery = """
-    CREATE TABLE Persons (
-        PersonID int,
-        LastName varchar,
-        FirstName varchar,
-        Address varchar,
-        City varchar
-    );
-    """
+CREATE TABLE student2(
+    id int,
+    name string,
+    score float
+);
+"""
 
 let mockMsgs = [
     Message(query: "Let's getting start", content:"Enter the SQL query on the editor and click \"excute\" button", time: Date())

@@ -27,33 +27,23 @@ struct ContentView: View {
     
     @State private var alertMsg = ""
     
-    @State private var currExeLine = 0
-    
-    @State private var executing = false
-    
-    @State private var totalLine = 0
-    
-    @State private var cmds: [String] = [];
+    @State private var page = 1;
     
     func handleExecuted(err: String?, res: SQLServerResponse?) {
         if(res != nil) {
-            messages.append(
-                Message(query: command.replacingOccurrences(of: "\n", with: ""),
-                        content: res?.error ?? "Operation Successed without message.",
-                        time: Date()
+            var tempArray = [Message]()
+            for item in messages {
+                tempArray.append(item)
+            }
+            for msg in res?.messages ?? [] {
+                tempArray.append(
+                    Message(query: msg.command, content: msg.message, time: Date())
                 )
-            )
+            }
+            messages = tempArray
             data = res?.results ?? []
             fields = res?.fields ?? []
-            
-            if(executing && totalLine > currExeLine + 1 && cmds[currExeLine + 1] != "") {
-                currExeLine += 1
-                executeSQL(url: host, query: cmds[currExeLine], callback: handleExecuted)
-                
-            } else {
-                currExeLine = 0
-                executing = false
-            }
+            page = 1
             
         } else {
             messages.append(
@@ -65,8 +55,6 @@ struct ContentView: View {
             alertTitle = "Error Occured"
             alertMsg = err ?? "Encountered unexpected error Q_Q"
             showingAlert = true
-            currExeLine = 0
-            executing = false
         }
     }
     
@@ -105,30 +93,19 @@ struct ContentView: View {
             HStack{
                 Spacer()
                 Button("Execute") {
-                
-                        cmds = command.components(separatedBy: ";")
-                        currExeLine = 0
-                        executing = true
-                        totalLine = cmds.count
-                        executeSQL(url: host, query: cmds[0], callback: handleExecuted)
-                    
-                }
-                if(executing) {
-                  
-                    Text("Executing line " + String(currExeLine) + "/" + String(totalLine))
-                    Button("Cancel") {
-                        executing = false
-                    }
-                    
+                        executeSQL(url: host, query: command, callback: handleExecuted)
                 }
             }
             
             
             if(data.count > 0) {
                 
-                Text("Results")
+                HStack{
+                    Text("Results")
+                    Text("Total " + String(data.count) + " records").foregroundColor(.gray)
+                }
                 
-                DataTable(fields: $fields, data: $data)
+                DataTable(fields: $fields, data: $data, page: $page)
                 
             }
             

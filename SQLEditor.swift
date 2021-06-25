@@ -23,7 +23,7 @@ struct SQLEditor: View {
     )
 
     private static let dataTypeRegex = try! NSRegularExpression(
-        pattern: "(?<![a-zA-Z0-9])(INT|VARCHAR|FLOAT|=|<|>|!)(?![a-zA-Z0-9])",
+        pattern: "(?<![a-zA-Z0-9])(INT|VARCHAR|CHAR|STRING|FLOAT|=|<|>|!)(?![a-zA-Z0-9])",
         options: NSRegularExpression.Options.caseInsensitive
     )
     

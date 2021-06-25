@@ -50,7 +50,7 @@ struct MessageTable: View {
                 
             }
             
-        }.padding().background(Color.white)
+        }.padding().background(Color.white).frame(height: 120)
         
     }
     
