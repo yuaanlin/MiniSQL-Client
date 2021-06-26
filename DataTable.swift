@@ -15,11 +15,11 @@ struct DataTable:View {
     @Binding var page: Int;
     
     func dataFromIndex() -> Int {
-        return 200 * (page-1) > data.count ? data.count - 1 : 200 * (page-1)
+        return 60 * (page-1) > data.count ? data.count - 1 : 60 * (page-1)
     }
     
     func dataToIndex() -> Int {
-        return 200 * (page) > data.count ? data.count : 200 * page
+        return 60 * (page) > data.count ? data.count : 60 * page
     }
     
     var body: some View {
@@ -34,7 +34,7 @@ struct DataTable:View {
                 }
                 Spacer()
                 
-            }.background(Color.gray)
+            }.background(Color.gray).frame(height: 24)
             
             Divider()
             

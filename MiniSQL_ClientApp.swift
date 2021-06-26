@@ -12,6 +12,6 @@ struct MiniSQL_ClientApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-        }
+        }.windowStyle(HiddenTitleBarWindowStyle())
     }
 }

@@ -21,6 +21,10 @@ struct ContentView: View {
     
     @State private var messages: [Message] = mockMsgs
     
+    @State private var tables: [String] = ["student2"]
+    
+    @State private var indexes: [String] = ["test"]
+    
     @State private var showingAlert = false
     
     @State private var alertTitle = ""
@@ -35,14 +39,20 @@ struct ContentView: View {
             for item in messages {
                 tempArray.append(item)
             }
-            for msg in res?.messages ?? [] {
+            
+            guard let res = res else {
+                return
+            }
+            
+            for msg in res.messages.count > 20 ? res.messages[0...19] : res.messages[0...res.messages.count-1] {
                 tempArray.append(
                     Message(query: msg.command, content: msg.message, time: Date())
                 )
             }
+            
             messages = tempArray
-            data = res?.results ?? []
-            fields = res?.fields ?? []
+            data = res.results
+            fields = res.fields
             page = 1
             
         } else {
@@ -60,63 +70,92 @@ struct ContentView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading) {
+        HSplitView {
             
-            Text("Host")
-            TextField("localhost:3306", text: $host).padding(.bottom)
-            
-            HStack {
-                Text("Query")
-                Button("select File") {
-                  let panel = NSOpenPanel()
-                  panel.allowsMultipleSelection = false
-                  panel.canChooseDirectories = false
-                  if panel.runModal() == .OK {
-                      
-                      guard let url = panel.url else {
-                          return
-                      }
-                      
-                      do {
-                          command = try String(contentsOf: url, encoding: .utf8)
-                      } catch {
-                          alertTitle = "Error"
-                          alertMsg = "Cannot open this file"
-                          showingAlert = true
-                      }
-                  }
-                }
+            List {
+                Text("Host")
+                    .foregroundColor(.gray)
+                
+                TextField("localhost:3306", text: $host)
+                    .padding(.bottom)
+                
+                Text("Tables")
+                    .foregroundColor(.gray)
+                
+                ForEach(tables, id: \.self) { table in
+                    
+                    Text(table)
+                        .onTapGesture {
+                            command += table
+                        }
+                    
+                }.padding(.bottom)
+                
+                Text("Indexes")
+                    .foregroundColor(.gray)
+                
+                ForEach(indexes, id: \.self) { index in
+                    Text(index)
+                }.padding(.bottom)
                 
             }
-            SQLEditor(command: $command)
-            
-            HStack{
-                Spacer()
-                Button("Execute") {
-                        executeSQL(url: host, query: command, callback: handleExecuted)
+            .listStyle(SidebarListStyle())
+        
+            VStack(alignment: .leading) {
+                
+                HStack {
+                    Text("Query")
+                    Button("select File") {
+                      let panel = NSOpenPanel()
+                      panel.allowsMultipleSelection = false
+                      panel.canChooseDirectories = false
+                      if panel.runModal() == .OK {
+                          
+                          guard let url = panel.url else {
+                              return
+                          }
+                          
+                          do {
+                              command = try String(contentsOf: url, encoding: .utf8)
+                          } catch {
+                              alertTitle = "Error"
+                              alertMsg = "Cannot open this file"
+                              showingAlert = true
+                          }
+                      }
+                    }
+                    
                 }
-            }
-            
-            
-            if(data.count > 0) {
+                SQLEditor(command: $command)
                 
                 HStack{
-                    Text("Results")
-                    Text("Total " + String(data.count) + " records").foregroundColor(.gray)
+                    Spacer()
+                    Button("Execute") {
+                            executeSQL(url: host, query: command, callback: handleExecuted)
+                    }
                 }
                 
-                DataTable(fields: $fields, data: $data, page: $page)
+                
+                if(data.count > 0) {
+                    
+                    HStack{
+                        Text("Results")
+                        Text("Total " + String(data.count) + " records").foregroundColor(.gray)
+                    }
+                    
+                    DataTable(fields: $fields, data: $data, page: $page)
+                    
+                }
+                
+                Text("Logs").padding(.top)
+                
+                MessageTable(messages: $messages)
+                
+            }.padding().alert(isPresented: $showingAlert) {
+                
+                Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("Close")))
                 
             }
-            
-            Text("Logs").padding(.top)
-            
-            MessageTable(messages: $messages)
-            
-        }.padding().alert(isPresented: $showingAlert) {
-            
-            Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("Close")))
-            
         }
         
 

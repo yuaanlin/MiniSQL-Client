@@ -53,9 +53,9 @@ struct SQLEditor: View {
     
     var body: some View {
         HighlightedTextEditor(text: $command, highlightRules: self.rules).frame(
-            minHeight: 240,
-            idealHeight: 240,
-            maxHeight: 240,
+            minHeight: 180,
+            idealHeight: 180,
+            maxHeight: 180,
             alignment: .leading)
     }
 }
