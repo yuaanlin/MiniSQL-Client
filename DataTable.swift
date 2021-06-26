@@ -56,7 +56,7 @@ struct DataTable:View {
                     
                     }
                 
-            }.frame(height: 320)
+            }.frame(height: 240)
             
             HStack {
                 
@@ -70,7 +70,7 @@ struct DataTable:View {
                 Button("Next Page") {
                     page+=1
                 }
-            }
+            }.padding(12)
             
         }.background(Color.white)
             

@@ -12,7 +12,7 @@ import AppKit
 struct ContentView: View {
     
     @State private var host: String = "localhost:3306"
-
+    
     @State private var command: String = mockQuery
     
     @State private var data: [[String]] = mockData
@@ -42,6 +42,12 @@ struct ContentView: View {
             
             guard let res = res else {
                 return
+            }
+            
+            if(res.messages.count > 20) {
+                tempArray.append(
+                    Message(query: "Info", content: "Skip " + String(res.messages.count - 20) + " messages ...", time: Date())
+                )
             }
             
             for msg in res.messages.count > 20 ? res.messages[0...19] : res.messages[0...res.messages.count-1] {
@@ -100,43 +106,45 @@ struct ContentView: View {
                 
             }
             .listStyle(SidebarListStyle())
-        
+            
             VStack(alignment: .leading) {
                 
                 HStack {
                     Text("Query")
                     Button("select File") {
-                      let panel = NSOpenPanel()
-                      panel.allowsMultipleSelection = false
-                      panel.canChooseDirectories = false
-                      if panel.runModal() == .OK {
-                          
-                          guard let url = panel.url else {
-                              return
-                          }
-                          
-                          do {
-                              command = try String(contentsOf: url, encoding: .utf8)
-                          } catch {
-                              alertTitle = "Error"
-                              alertMsg = "Cannot open this file"
-                              showingAlert = true
-                          }
-                      }
+                        let panel = NSOpenPanel()
+                        panel.allowsMultipleSelection = false
+                        panel.canChooseDirectories = false
+                        if panel.runModal() == .OK {
+                            
+                            guard let url = panel.url else {
+                                return
+                            }
+                            
+                            do {
+                                command = try String(contentsOf: url, encoding: .utf8)
+                            } catch {
+                                alertTitle = "Error"
+                                alertMsg = "Cannot open this file"
+                                showingAlert = true
+                            }
+                        }
                     }
                     
                 }
+                
                 SQLEditor(command: $command)
                 
                 HStack{
                     Spacer()
                     Button("Execute") {
-                            executeSQL(url: host, query: command, callback: handleExecuted)
+                        executeSQL(url: host, query: command, callback: handleExecuted)
                     }
                 }
                 
-                
                 if(data.count > 0) {
+                    
+                    Divider().padding()
                     
                     HStack{
                         Text("Results")
@@ -147,17 +155,33 @@ struct ContentView: View {
                     
                 }
                 
-                Text("Logs").padding(.top)
+                Divider().padding()
+                
+                HStack {
+                    
+                    Text("Logs")
+                    
+                    Spacer()
+                    
+                    Button("Clear") {
+                        messages = []
+                    }
+                    
+                }
                 
                 MessageTable(messages: $messages)
+                
+                
                 
             }.padding().alert(isPresented: $showingAlert) {
                 
                 Alert(title: Text(alertTitle), message: Text(alertMsg), dismissButton: .default(Text("Close")))
                 
-            }
+            }  
+            
+            
         }
         
-
+        
     }
 }

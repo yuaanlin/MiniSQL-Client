@@ -20,16 +20,39 @@ struct MessageTable: View {
     var body: some View {
         
         VStack {
+            
+            HStack {
                 
+                Text("Time")
+                    .frame(width: 60,alignment: .leading)
+                    .foregroundColor(Color.white)
+                
+                Divider().frame(height: 12)
+                
+                Text("Query")
+                    .frame(width: 180, alignment: .leading)
+                    .foregroundColor(Color.white)
+                
+                Divider().frame(height: 12)
+                
+                Text("Message").frame(width: 90, alignment: .leading)
+                    .foregroundColor(Color.white)
+                
+                Spacer()
+                
+            }
+            .padding(4)
+            .background(Color.gray)
+            
             ScrollViewReader { scrollProxy in
                 
                 ScrollView {
-        
+                    
                     ForEach(messages, id: \.id) { i in
                         
                         HStack {
                             
-                            Text("\(i.time, formatter: taskDateFormat)").foregroundColor(Color.gray)
+                            Text("\(i.time, formatter: taskDateFormat)").frame(width: 60, alignment: .leading).foregroundColor(Color.gray)
                             Divider()
                             Text(i.query).lineLimit(1).frame(width: 180, alignment: .leading)
                             Divider()
@@ -42,6 +65,7 @@ struct MessageTable: View {
                     }
                     
                 }
+                .padding(4)
                 .onChange(of: messages.count) { id in
                     withAnimation {
                         scrollProxy.scrollTo(messages.last?.id)
@@ -50,7 +74,7 @@ struct MessageTable: View {
                 
             }
             
-        }.padding().background(Color.white)
+        }.background(Color.white)
         
     }
     
